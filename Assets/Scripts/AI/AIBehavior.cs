@@ -250,6 +250,9 @@ public class AIBehavior : MonoBehaviour
     // Check if the AI is legally able to hit the ball
     private bool CanHit()
     {
+        // If the ball on the other side of the court, can't it the ball
+        if (BallManager.Instance.transform.position.x * transform.position.x >= 0) return false;
+        
         GameManager gameManager = GameManager.Instance;
         // If the point has ended, they cannot hit the ball
         if (gameManager.gameState.Equals(GameManager.GameState.PointEnd)) return false;
